@@ -1,10 +1,10 @@
 n = int(input("Ingrese un numero: "))
 
+factorial = 1
 contador = 1
-suma = 0
 
 while contador <= n:
-    suma += contador
+    factorial = factorial * contador
     contador += 1
 
-print("La suma es:", suma)
+print("El factorial es:", factorial)
