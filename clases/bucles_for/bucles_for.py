@@ -1,1 +1,2 @@
-print(round(4.55, 1))
+for i in range(20, 1, -2):
+    print(i)

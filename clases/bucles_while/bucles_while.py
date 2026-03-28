@@ -1,8 +1,22 @@
 
 
+n = 0
+while True:
+    print("Enjabonar")
+    print("Enjuagar")
+    n += 1
+    if n == 5:
+        print("n =", n)
+        break
+print("secar")
 
-
-
+n = 0
+while n == 5:
+    print("Enjabonar")
+    print("Enjuagar")
+    n += 1
+print("n =", n)
+print("secar")
 
 
 
