@@ -1,6 +1,6 @@
 i = 1
 total = 0
-
+contador = 0
 while i <= 3:
     j = 1
     while j <= 2:
