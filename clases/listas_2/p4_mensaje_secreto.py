@@ -16,7 +16,6 @@ def descifrar_it(letras, instrucciones):
                 lista_final.append(letras[indices_anteriores + i])
         # Si la acción es "saltar", simplemente actualizamos el índice de las letras
         indices_anteriores += instrucciones[indice_i + 1]
-        indice_i += 1
     return lista_final
 
 
