@@ -1,7 +1,5 @@
-a = [1,2]
-b = [3,4]
-# extend
-#[1, 2, 3, 4]
-a.append(b)
-print(a)
-# [1, 2, [3, 4]]
+cosas = ['libro','galleta',4,'galleta',5]
+
+cosas.remove("futbol")
+print(cosas)
+
