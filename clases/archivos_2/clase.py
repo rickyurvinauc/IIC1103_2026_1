@@ -1,28 +1,36 @@
-# Escribe un programa en Python que lea el 
-# de notas.csv y cree un archivo .txt
-# con todos los ruts de los estudiantes que tienen
-# promedio mas de 580 en sus sets
+# Escribe una funcion que reciba un nombre de un archivo .csv
+# y permita actualizar la nota final segun todas las notas
+# la nota final se calcula como el promedio de todos los sets
 
-#  el archivo debe llamarse como aprobados.txt
-# 3-590
-# 4-600
+# leer el archivo
+# obtener los datos en una lista
+# construir una lista de listas con los datos
+# modifico esta lista
+# guardo la lista en el arhcivo
 
-archivo_notas = open("notas.csv","r")
-contenido = archivo_notas.readlines()
-archivo_notas.close()
-
-archivo_nuevo = open("aprobados.txt","a")
-contenido = contenido[1:]
-
-for nota in contenido:
-    datos = nota.strip().split(",")
-    puntajes = datos[2:]
-    suma = 0
-    for puntaje in puntajes:
-        puntaje = int(puntaje)
-        suma += puntaje
-    promedio = suma / len(puntajes)
-    if promedio > 580:
-        texto = datos[0]+"-"+str(promedio)+"\n"
-        archivo_nuevo.write(texto)
-archivo_nuevo.close()
+def modificar_notas(nombre):
+    archivo = open(nombre,"r")
+    contenido = archivo.readlines()
+    cabecera = contenido[0]
+    notas = contenido[1:]
+    archivo.close()
+    lista_listas = []
+    for linea in notas:
+        datos = linea.strip().split(",")
+        notas_sets = datos[2:] # ["600","600","600","600","600"]
+        suma = 0
+        for nota in notas_sets:
+            suma += int(nota)
+        promedio = suma / len(notas_sets)
+        datos[1] = str(promedio)
+        lista_listas.append(datos)
+    archivo = open(nombre, "w")
+    # archivo.writelines(lista_listas)
+    archivo.write(cabecera)
+    for alumno in lista_listas:
+        texto = ",".join(alumno)
+        texto = texto + "\n"
+        archivo.write(texto)
+    archivo.close()
+ 
+modificar_notas("notas.csv")
