@@ -1,29 +1,18 @@
-class Estudiante:
+class Persona:
 
-    def __init__(self, nombre, carrera, edad):
+    def __init__(self, nombre, apellido, edad): # atributos necesarios cuando se crea el obejto
         self.nombre = nombre
-        self.carrera = carrera
+        self.apellido = apellido
         self.edad = edad
-        self.cant_ramos_aprobados = 0
-
-    def saludar(self):
-
-        return f"Hola soy " +self.nombre +" y tengo "+ str(self.cant_ramos_aprobados) +" de ramos aprobados"
     
-    def hacer_sentadilla(self):
-        print("Estoy haciendo una sentadilla *********")
+    def __str__(self):
+        texto = self.nombre+" "+self.apellido+" edad: "+str(self.edad)
 
-    def aprobar_curso(self):
-        self.cant_ramos_aprobados += 1
-    
-isi = Estudiante("Isi","Ing. Civil", 19)
-dilantero = Estudiante("Dilantero","Ing. Civil", 19)
+        return texto
 
-print(dilantero.saludar())
-isi.hacer_sentadilla()
+# creacion del objeto
+ricardo = Persona("Ricardo","Urvina", 30)
+ingrid = Persona("Ingrid","Medina", 31)
+print(ricardo)
+print(ingrid)
 
-isi.aprobar_curso()
-dilantero.aprobar_curso()
-
-print(isi.saludar())
-print(dilantero.saludar())
