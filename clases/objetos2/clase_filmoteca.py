@@ -36,17 +36,27 @@ class Filmoteca:
         self.peliculas.append(pelicula)
 
     def contar_por_anio(self):
-        conteo = []
+
+        # consturir una lista de anios sin repeticion
+        anios = []
         for pelicula in self.peliculas:
-            encontrado = False
-            for item in conteo:
-                if item[0] == pelicula.anio:
-                    item[1] += 1
-                    encontrado = True
-                    break
-            if not encontrado:
-                conteo.append([pelicula.anio, 1])
-        return conteo
+            if pelicula.anio not in anios:
+                anios.append(pelicula.anio)
+
+        #[2002,2004,2006]
+        resultado = [] #[[anio,cantidad],[anio,cantidad]]
+        for anio in anios:
+            contador = 0
+            for pelicula in self.peliculas:
+                if anio == pelicula.anio:
+                    contador += 1
+
+            resultado.append([anio, contador])
+        return resultado
+
+
+
+
 
 
 pelicula1 = Pelicula("Una nueva esperanza", 1997, "Ciencia ficcion", "Un joven granjero intercepta una llamada de socorro")
@@ -68,5 +78,5 @@ filmoteca.agregar_pelicula(pelicula3)
 print(filmoteca)
 print("Conteo por año:", filmoteca.contar_por_anio())
 
-print("¿Es 'Una nueva esperanza' mejor que 'La amenaza fantasma'?:", pelicula2.es_mejor_que(pelicula1))
-print("¿Es 'Dunkirk' mejor que 'La amenaza fantasma'?:", pelicula3.es_mejor_que(pelicula2))
+# print("¿Es 'Una nueva esperanza' mejor que 'La amenaza fantasma'?:", pelicula2.es_mejor_que(pelicula1))
+# print("¿Es 'Dunkirk' mejor que 'La amenaza fantasma'?:", pelicula3.es_mejor_que(pelicula2))
